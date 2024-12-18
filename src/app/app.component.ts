@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
+
 import { CATEGORIES, SUBCATEGORIES } from '@quiz-app/constants';
 import { Category } from '@quiz-app/types';
 import { SelectComponent } from '@quiz-app/ui';
 
 @Component({
-  selector: 'app-root',
   imports: [SelectComponent],
-  templateUrl: './app.component.html',
+  selector: 'app-root',
   styleUrl: './app.component.css',
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
   title = 'quiz-app';

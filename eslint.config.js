@@ -1,8 +1,9 @@
-const eslint = require("@eslint/js");
-const tseslint = require("typescript-eslint");
-const angular = require("angular-eslint");
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
+import angular from "angular-eslint";
+import eslintImport from "eslint-plugin-import";
 
-module.exports = tseslint.config(
+export default tseslint.config(
   {
     files: ["**/*.ts"],
     extends: [
@@ -12,6 +13,42 @@ module.exports = tseslint.config(
       ...angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
+    plugins: {
+      eslintImport,
+    },
+    settings: {
+      "import/resolver": {
+        typescript: {},
+      },
+    },
+    rules: {
+      "eslintImport/order": [
+        "error",
+        {
+          groups: [
+            ["builtin"],
+            ["external"],
+            ["internal"],
+            ["parent"],
+            ["sibling"],
+          ],
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: false,
+          },
+          "newlines-between": "always",
+        },
+      ],
+      "sort-keys": [
+        "error",
+        "asc",
+        {
+          caseSensitive: true,
+          natural: true,
+          minKeys: 2,
+        },
+      ],
+    },
   },
   {
     files: ["src/app/**/*.ts"],
