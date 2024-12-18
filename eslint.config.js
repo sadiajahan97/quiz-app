@@ -2,6 +2,7 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import angular from "angular-eslint";
 import eslintImport from "eslint-plugin-import";
+import eslintTailwindcss from "eslint-plugin-tailwindcss";
 
 export default tseslint.config(
   {
@@ -98,5 +99,11 @@ export default tseslint.config(
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,
     ],
+    plugins: {
+      eslintTailwindcss,
+    },
+    rules: {
+      "eslintTailwindcss/classnames-order": "error",
+    },
   },
 );
