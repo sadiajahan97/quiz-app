@@ -1,20 +1,16 @@
-<mat-select [(ngModel)]="selectedCategory" [name]="name">
-  @for (category of categories; track category.value) {
-    @if (category.subcategory === null) {
-      <mat-option [value]="category.value">{{ category.value }}</mat-option>
+<mat-select [(value)]="selectedOption">
+  @for (option of options; track option) {
+    @if (!option.group) {
+      <mat-option [value]="option.value">{{ option.value }}</mat-option>
     }
   }
-  @if (subcategories !== null) {
-    @for (subcategory of subcategories; track subcategory) {
-      <mat-optgroup [label]="subcategory">
-        @for (category of categories; track category.value) {
-          @if (category.subcategory === subcategory) {
-            <mat-option [value]="category.value">{{
-              category.value
-            }}</mat-option>
-          }
+  @for (group of groups; track group) {
+    <mat-optgroup [label]="group">
+      @for (option of options; track option) {
+        @if (option.group === group) {
+          <mat-option [value]="option.value">{{ option.value }}</mat-option>
         }
-      </mat-optgroup>
-    }
+      }
+    </mat-optgroup>
   }
 </mat-select>

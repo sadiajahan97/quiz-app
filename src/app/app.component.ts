@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { CATEGORIES, SUBCATEGORIES } from '@quiz-app/constants';
-import { Category } from '@quiz-app/types';
+import { CATEGORIES, GROUPS } from '@quiz-app/constants';
+import { Option } from '@quiz-app/types';
 import { SelectComponent } from '@quiz-app/ui';
 
 @Component({
@@ -11,8 +11,7 @@ import { SelectComponent } from '@quiz-app/ui';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+  categories: Option[] = CATEGORIES;
+  groups: string[] = GROUPS;
   title = 'quiz-app';
-  categories: Category[] = CATEGORIES;
-  subcategories: string[] = SUBCATEGORIES;
-  name = 'name';
 }

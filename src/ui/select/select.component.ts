@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 
-import { Category } from '@quiz-app/types';
+import { Option } from '@quiz-app/types';
 
 @Component({
   imports: [FormsModule, MatSelectModule],
@@ -11,9 +11,8 @@ import { Category } from '@quiz-app/types';
   templateUrl: './select.component.html',
 })
 export class SelectComponent {
-  @Input() name!: string;
-  @Input() categories!: Category[];
-  @Input() subcategories!: null | string[];
+  @Input() groups!: string[];
+  @Input() options!: Option[];
 
-  selectedCategory = 'Any Category';
+  selectedOption = 'Any Category';
 }
